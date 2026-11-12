@@ -1,0 +1,14 @@
+/* nprogress-custom.css */
+#nprogress .bar {
+  background: #7367F0 !important;
+}
+
+#nprogress .spinner-icon {
+  border-block-start-color: #7367F0 !important;
+  border-inline-start-color: #7367F0 !important;
+}
+
+/* Optionally, customize the shadow */
+#nprogress .peg {
+  box-shadow: 0 0 10px #7367F0, 0 0 5px #7367F0;
+}

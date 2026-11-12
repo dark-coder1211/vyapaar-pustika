@@ -1,0 +1,85 @@
+'use client'
+import { useRouter } from 'next/navigation'
+
+// ** MUI Imports
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+
+// ** Styled Component Import
+
+// ** Components Imports
+import ExitToApp from '@/components/ExitToApp'
+import { Grid } from '@mui/material'
+import { BsFillDoorOpenFill } from 'react-icons/bs'
+import GateIn from '@/views/dashboard/GateInStatus/GateIn/GateIn'
+import GateOut from '@/views/dashboard/GateInStatus/GateOut/GateOut'
+import PendingFirstWeighment from '@/views/dashboard/GateInStatus/PendingFirstWeighment/PendingFirstWeighment'
+import PendingSecondWeighment from '@/views/dashboard/GateInStatus/PendingSecondWeighment/PendingSecondWeighment'
+
+
+const GateInStatusDashboard = () => {
+  const router = useRouter()
+
+  function handleChange() {
+    router.push('/dashboardpage/')
+  }
+
+  return (
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          position: 'sticky',
+          backgroundColor: 'white',
+          top: 66, // Adjust this value as needed
+          zIndex: 1000,
+          transition: 'box-shadow 0.3s ease',
+          boxShadow: '0px 4px 8px rgba(115, 103, 240, 0.5)',
+          borderRadius: '10px'
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <BsFillDoorOpenFill color='#7367F0' size={'1.25rem'} className='ml-3' />
+          <Typography variant='h5' sx={{ fontWeight: 600, color: `#7367F0`, marginLeft: 2 }}>
+            Gate In Status
+          </Typography>
+        </Box>
+        <IconButton
+          onClick={handleChange}
+          size='small'
+          aria-label='settings'
+          className='card-more-options'
+          sx={{ color: '#7367F0' }}
+        >
+          <ExitToApp />
+        </IconButton>
+      </Box>
+
+      <Box sx={{ mt: 3 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <GateIn />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <GateOut />
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{ mt: 3 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <PendingFirstWeighment />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <PendingSecondWeighment />
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  )
+}
+
+export default GateInStatusDashboard
